@@ -34,11 +34,12 @@ module.exports = (robot) ->
         msg.send "usage: createrepo [repository name] [team name]"
        
     robot.hear /teams/i, (msg) ->
+        team_name = ""
         msg.send "Team List:"
         github.get "/orgs/RHDHR/teams", (teams) ->
           for team in teams
-            msg.send team.name
-
+            team_name += team.name + " "
+          msg.send team_name
   # robot.hear /badger/i, (msg) ->
   #   msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
