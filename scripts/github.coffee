@@ -15,7 +15,7 @@ module.exports = (robot) ->
     robot.hear /createrepo (.*) (.*)/i, (msg) ->
         github.handleErrors (response) ->
           msg.send "Error: #{response.statusCode} #{response.error}"
-          msg.send "Probably the repo already exists."
+          msg.send "Probably the repo already exists or the name already taken."
 
         github.get "/orgs/RHDHR/teams", (teams) ->
           flag = 0
